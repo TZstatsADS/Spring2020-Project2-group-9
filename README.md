@@ -20,7 +20,7 @@ The **learning goals** for this project is:
 ## Project Title Lorem ipsum dolor sit amet
 Term: Fall 2019
 
-+ Team #
++ Team #9
 + **Projec title**: + Team members
 	+ Chen, Shuyi
 	+ Li, Jia

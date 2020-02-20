@@ -1,42 +1,37 @@
+# UI
 library(shiny)
+library(shinydashboard)
 library(leaflet)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
+dashboardPage(
+  dashboardHeader(title = "NYC Government Job Posting"),
+  dashboardSidebar(sidebarMenu(
+    menuItem("Home", tabName = "Home", icon = icon("dashboard")),
+    menuItem("MAP", tabName = "MAP", icon = icon("compass")),
+    menuItem("DashBoard", tabName = "DashBoard", icon = icon("dashboard")),
+    menuItem("Explore", tabName = "Explore", icon = icon("industry"))
+  )),
+  dashboardBody(tabItems(
+    #home
+    tabItem(tabName = "Home",
+            fluidPage(
+              fluidRow(
+                box(width = 15, title = "Introduction", status = "warning",
+                    solidHeader = TRUE, h3("NYC Government Job Posting"),
+                    h4("By Mengying Shi, XXXXXXXXXXXXX"),
+                    h5("Introduction"),
+                    h5("XXXXXXXXX"))),
+              fluidRow(box(width = 15, title = "web decribtion", status = "warning",
+                           solidHeader = TRUE, h3("What Does This Map Do?"),
+                           tags$div(tags$ul(
+                             tags$li("MAP: "),
+                             tags$li("DashBoard: "),
+                             tags$li("Explore:")
+                           ))))
+            ))
+    # MAP
+    
+  )
   
-  # Application title
-  titlePanel("2009 Manhattan Housing Sales"),
-  
-  # Sidebar with a selector input for neighborhood
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("nbhd", label = h5("Choose a Manhattan Neighborhood"), 
-                         choices = list("all neighborhoods"=0,
-                                        "Central Harlem"=1, 
-                                        "Chelsea and Clinton"=2,
-                                        "East Harlem"=3, 
-                                        "Gramercy Park and Murray Hill"=4,
-                                        "Greenwich Village and Soho"=5, 
-                                        "Lower Manhattan"=6,
-                                        "Lower East Side"=7, 
-                                        "Upper East Side"=8, 
-                                        "Upper West Side"=9,
-                                        "Inwood and Washington Heights"=10), 
-                         selected = 0)
-      #sliderInput("p.range", label=h3("Price Range (in thousands of dollars)"),
-      #            min = 0, max = 20000, value = c(200, 10000))
-    ),
-    # Show two panels
-    mainPanel(
-      #h4(textOutput("text")),
-      h3(code(textOutput("text1"))),
-      tabsetPanel(
-        # Panel 1 has three summary plots of sales. 
-        tabPanel("Sales summary", plotOutput("distPlot")), 
-        # Panel 2 has a map display of sales' distribution
-        tabPanel("Sales map", plotOutput("distPlot1"))),
-      leafletOutput("map", width = "80%", height = "400px")
-    )
- )
-))
+  ))
 

@@ -3,6 +3,13 @@ library(shiny)
 library(shinydashboard)
 library(leaflet)
 
+####
+r_colors <- rgb(t(col2rgb(colors()) / 255))
+names(r_colors) <- colors()
+###
+load("../data/na_drop.RData")
+
+
 dashboardPage(
   dashboardHeader(title = "NYC Government Job Posting"),
   dashboardSidebar(sidebarMenu(
@@ -28,9 +35,44 @@ dashboardPage(
                              tags$li("DashBoard: "),
                              tags$li("Explore:")
                            ))))
-            ))
+            )),
     # MAP
+    tabItem(tabName = "MAP",
+      fluidPage(
+        # wellPane(
+          # selectInput("category", label = h3("Select Category"),
+          #             choices = list("Category" = list("Operation & Maintenance", "Finance","Public Safety",
+          #                                              "Clerical & Administrative Support", "Technology & Data",
+          #                                              "Community","Social Service","Health","Policy, Research & Analysis",
+          #                                              "Engineering, Architecture, & Planning","Communications & Intergovernmental",
+          #                                              "Legal"))),
+          #             leafletOutput("map")
+        
+        
+        checkboxGroupInput("category", "Choose Category:",
+                           choiceNames =
+                             list("Operation & Maintenance", "Finance","Public Safety",
+                                  "Clerical & Administrative Support", "Technology & Data",
+                                  "Community","Social Service","Health","Policy, Research & Analysis",
+                                  "Engineering, Architecture, & Planning","Communications & Intergovernmental",
+                                  "Legal"
+                                  ),
+                           choiceValues =
+                             list("Operation & Maintenance", "Finance","Public Safety",
+                                  "Clerical & Administrative Support", "Technology & Data",
+                                  "Community","Social Service","Health","Policy, Research & Analysis",
+                                  "Engineering, Architecture, & Planning","Communications & Intergovernmental",
+                                  "Legal")
+        ),
+        leafletOutput("map")
+        
+        
+        
+                      )
+        )
+      # )
     
+    ####
   )
   
   ))

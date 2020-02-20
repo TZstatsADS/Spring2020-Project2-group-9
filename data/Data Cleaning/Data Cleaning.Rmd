@@ -1,0 +1,106 @@
+---
+title: "NYC Job Map"
+author: "Ran (Rena) Lu"
+date: "2/17/2020"
+output: html_document
+---
+
+##Job Title Analysis  
+  
+```{r message=FALSE}
+library(readr)
+NYC_Jobs <- read_csv("../../data/NYC_Jobs.csv")
+# View(NYC_Jobs)
+library(dplyr)
+library(stringr)
+```
+
+
+```{r}
+# df <- NYC_Jobs %>% select(`Job ID`, `Civil Service Title`, `Job Category`)
+df <- NYC_Jobs %>% select(-`Posting Type`,-`Business Title`,-`Title Classification`,-`Title Code No`,-Level,-`Job Description`,-`Minimum Qual Requirements`,-`Preferred Skills`,-`Additional Information`,-`To Apply`, -`Work Location 1`,-`Recruitment Contact`,-`Residency Requirement`,-`Post Until`, -`Posting Updated`, -`Process Date`, -`Hours/Shift`)
+df$`Job Category` <- df$`Job Category` %>% str_to_upper()
+`Civil Service Title` <- df$`Civil Service Title`
+`Job Category` <- df$`Job Category`
+df <- df %>% mutate(title = case_when(
+  `Civil Service Title` %>% str_detect("FORENSIC") == 1 ~ "Forensic",
+  `Civil Service Title` %>% str_detect("ENGINEER") == 1 ~ "Engineer",
+  `Civil Service Title` %>% str_detect("PAINTER|ARTIST") == 1 ~ "Artist",
+  `Civil Service Title` %>% str_detect("MAINTAINER") == 1 ~ "Maintainer",
+  `Civil Service Title` %>% str_detect("ATTORNEY|LEGAL") == 1 ~ "Legal/Attorney",
+  `Civil Service Title` %>% str_detect("INTERN") == 1 ~ "Intern",
+  `Civil Service Title` %>% str_detect("CONSTRUCTION") == 1 ~ "Construction",
+  `Civil Service Title` %>% str_detect("HOUS") == 1 ~ "Housing",
+  `Civil Service Title` %>% str_detect("MECHANIC|MACHINIST|INSTRUMENTATION SPECIALIST") == 1 ~ "Mechanical Specialist",
+  `Civil Service Title` %>% str_detect(
+  "ELECTRICIAN|PLUMBER|REPAIR|MAINTENANCE|LOCKSMITH|GARDENER|FITTER|SUPERINTENDE") == 1 ~ "Repair Service",
+  `Civil Service Title` %>% str_detect("RESEARCH|SCIENTIST") == 1 ~ "Researcher",
+  `Civil Service Title` %>% str_detect("COMMUNITY|SOCIAL|CASEWORKER|HUMAN RIGHT|AUDITOR|INITIATIVE") == 1 ~ "Social Worker",
+  `Civil Service Title` %>% str_detect("TELECOMMUNICATION|CALL") == 1 ~ "Telecommunication",
+  `Civil Service Title` %>% str_detect("ANALYST|ESTIMATOR|STATISTICIAN") == 1 ~ "Analyst",
+  `Civil Service Title` %>% str_detect("COUNSEL") == 1 ~ "Counsel",
+  `Civil Service Title` %>% str_detect("ASSISTANT|AIDE") == 1 ~ "Assistant",
+  `Civil Service Title` %>% str_detect("INSPECTOR|INSP|QUALITY") == 1 ~ "Inspector",
+  `Civil Service Title` %>% str_detect("MANAGER") == 1 ~ "Manager",
+  `Civil Service Title` %>% str_detect("ARCHITECT") == 1 ~ "Architector",
+  `Civil Service Title` %>% str_detect("HEALTH|MEDICAL|NURSE|PSYCHOLOGIST|HYGIENIST") == 1 ~ "Medical Service",
+  `Civil Service Title` %>% str_detect("CITY|PROGRAM|OFFIC|ANAL|REP|DIRECTOR|CUSTOD|DEVELOP") == 1 ~ "City Officer",
+  `Civil Service Title` %>% str_detect("ECONOMIST") == 1 ~ "Economist",
+  `Civil Service Title` %>% str_detect("COLLEGE|YOUTH|CHILD") == 1 ~ "Youth/Child Development Officer",
+  `Civil Service Title` %>% str_detect("OPERATOR") == 1 ~ "Skilled Operator",
+  `Civil Service Title` %>% str_detect("EXECUTIVE") == 1 ~ "Executive",
+  `Civil Service Title` %>% str_detect("CONTRACT|CONSULTANT") == 1 ~ "Specialist w/o Job Aspect",
+  `Civil Service Title` %>% str_detect("INVESTIGATOR|CONFIDENTIAL") == 1 ~ "Investigator",
+  `Civil Service Title` %>% str_detect("CRIMINAL|PROBATION") == 1 ~ "Criminalist",
+  `Civil Service Title` %>% str_detect("TRANSPORTATION") == 1 ~ "Transportation",
+  `Civil Service Title` %>% str_detect("ACCOUNTANT") == 1 ~ "Accountant",
+  `Civil Service Title` %>% str_detect("EXTERMINATOR|PEST") == 1 ~ "Pest Control",
+  `Civil Service Title` %>% str_detect("COMPUTER|IT") == 1 ~ "Computer Specialist",
+  `Civil Service Title` %>% str_detect("ADMINISTRAT|DEPUTY COMMISSIONER") == 1 ~ "Administration",
+  `Civil Service Title` %>% str_detect("SUPERVISOR") == 1 ~ "Supervisor",
+  `Civil Service Title` %>% str_detect("GEOLOGIST") == 1 ~ "Geologist",
+  `Civil Service Title` %>% str_detect("CLAIM SPECIALIST|CLERICAL ASSOCIATE") == 1 ~ "Claim Assoviate",
+  `Civil Service Title` %>% str_detect("CHEMIST|LABORATORY") == 1 ~ "Chemist/Microbiologist"
+), category = case_when(
+  `Job Category` %>% str_detect("MAINTENANCE") == 1 ~ "Operation & Maintenance",
+  `Job Category` %>% str_detect("HUMAN RESOURCES|COMMUNITY") == 1 ~ "Community",
+  `Job Category` %>% str_detect("PUBLIC SAFETY") == 1 ~ "Public Safety",
+  `Job Category` %>% str_detect("TECH") == 1 ~ "	Technology & Data",
+  `Job Category` %>% str_detect("FINANCE|BUSINESS|ACCOUNT") == 1 ~ "Finance",
+  `Job Category` %>% str_detect("RESEARCH|ANALYSIS") == 1 ~ "Policy, Research & Analysis",
+  `Job Category` %>% str_detect("SOCIAL SERVICE") == 1 ~ "Social Service",
+  `Job Category` %>% str_detect("CLERICAL") == 1 ~ "Clerical & Administrative Support",
+  `Job Category` %>% str_detect("COMMUNICATION") == 1 ~ "Communications & Intergovernmental",
+  `Job Category` %>% str_detect("ARCHITECTURE") == 1 ~ "Engineering, Architecture, & Planning",
+  `Job Category` %>% str_detect("LEGAL") == 1 ~ "Legal",
+  `Job Category` %>% str_detect("HEALTH") == 1 ~ "Health"
+)
+)
+df[is.na(df$title),"title"] <- "Other"
+# latlon <- geocode(NYC_Jobs$`Work Location`, source = "google", output = "latlon")
+# write_csv(latlon, "../../data/latlon.csv")
+latlon <- read_csv("../../data/latlon.csv")
+title_category <- cbind(df, latlon)
+
+```
+
+```{r}
+library(sf)
+title_category <- title_category %>% na.omit()
+sf <- st_read("https://raw.githubusercontent.com/blackmad/neighborhoods/master/new-york-city-boroughs.geojson")
+sf_title_category <- st_as_sf(title_category[,c("lon","lat")], coords = c("lon", "lat"))
+st_crs(sf_title_category) <- st_crs(sf)
+sf_borough <- st_within(sf_title_category, sf)
+borough <- sapply(sf_borough, function(x) as.character(sf$name[x])) %>% as.character()
+title_category <- cbind(title_category, data.frame(borough))
+title_category[which(title_category$borough=="character(0)"),"borough"] <- NA
+na_drop_jobs <- title_category %>% na.omit()
+jobs_no_borough <- title_category %>% select(-borough)
+jobs_no_borough <- jobs_no_borough %>% select(-`Civil Service Title`, -`Job Category`)
+na_drop_jobs <- na_drop_jobs %>% select(-`Civil Service Title`, -`Job Category`)
+names(jobs_no_borough)[c(3,4)] <- c("num_positions", "Full/Part")
+names(na_drop_jobs)[c(3,4)] <- c("num_positions", "Full/Part")
+# write_csv(jobs_no_borough, "../../data/jobs_no_borough.csv")
+# write_csv(na_drop_jobs, "../../data/na_drop.csv")
+```
+

@@ -29,8 +29,9 @@ dashboardPage(
   dashboardSidebar(sidebarMenu(
     menuItem("Home", tabName = "Home", icon = icon("dashboard")),
     menuItem("MAP", tabName = "MAP", icon = icon("compass")),
-    menuItem("DashBoard", tabName = "DashBoard", icon = icon("dashboard")),
-    menuItem("Explore", tabName = "Explore", icon = icon("industry"))
+    menuItem("Facts", tabName = "Facts", icon = icon("dashboard")),
+    menuItem("Statistical Analysis", tabName = "Statistical Analysis", icon = icon("industry")),
+    menuItem("Job search", tabName = "job search", icon = icon("industry"))
   )),
   dashboardBody(tabItems(
     #home

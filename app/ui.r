@@ -63,23 +63,23 @@ dashboardPage(
                                         "Community","Social Service","Health","Policy, Research & Analysis",
                                         "Engineering, Architecture, & Planning","Communications & Intergovernmental",
                                         "Legal"),
-                                 selected = "Operation & Maintenance"),
-                checkboxGroupButtons("Full/Part", "Choose Part/Full Time:", choices = c("F","P"), selected = c("F","P")),
+                                 selected = "Finance"),
+                checkboxGroupButtons("Full/Part", "Choose Part/Full Time:", choices = c("F","P"), selected = "F"),
                 checkboxGroupInput("borough", "Choose Borough:",
                                    choices = c("Bronx","Queens", "Manhattan", "Brooklyn", "Staten Island"), 
                                    selected = c("Bronx","Queens", "Manhattan", "Brooklyn", "Staten Island"))
               ),
               absolutePanel(id = "controls", class = "panel panel-default", fixed= TRUE, draggable = TRUE,
-                            top = 140, left = "auto", right = 20, bottom = "auto", width = 320, height = "auto",
+                            top = 170, left = "auto", right = 20, bottom = "auto", width = 320, height = "auto",
                             selectInput("Career Level", label = h3("Select Career Level"), 
                                         choices = list("Career Level" = list("Entry-Level", "Executive","Experienced (non-manager)",
                                                                          "Manager", "Student")), selected = "Entry-Level"),
                             dateInput("Posting Date", "Choose start date:",
-                                     value = "2020-01-01",
+                                     value = "2014-01-01",
                                      min = min(na_drop$`Posting Date`),
                                      max = max(na_drop$`Posting Date`)),
                             sliderInput("Salary Range To", "Highest Salary Offered Higher Than: ", min=floor(min(na_drop$`Salary Range To`)),
-                                        max=floor(max(na_drop$`Salary Range To`)), value=2000, step=20)
+                                        max=floor(max(na_drop$`Salary Range To`))-100000, value=2000, step=20)
                             
               )
             )

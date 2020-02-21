@@ -22,7 +22,7 @@ shinyServer(function(input,output, session){
                                       na_drop$`Posting Date` >= input$`Posting Date` & na_drop$`Salary Range To` >= input$`Salary Range To`),])
 
    output$map <- renderLeaflet({
-     map <- leaflet() %>% setView(-73.9578,40.72348,zoom = 13) %>% addTiles() %>% addCircleMarkers(lng = category()$lon, lat = category()$lat, 
+     map <- leaflet() %>% setView(-73.9578,40.72348,zoom = 11) %>% addTiles() %>% addCircleMarkers(lng = category()$lon, lat = category()$lat, 
                                                           clusterOptions = markerClusterOptions()) %>%
        addProviderTiles(providers$CartoDB.Positron)
      

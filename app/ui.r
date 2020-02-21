@@ -1,7 +1,21 @@
 # UI
+# Load all the required libraries 
+packages.used <- c("shiny", "shinydashboard", 
+                   "leaflet", "shinyWidgets")
+# check packages that need to be installed.
+packages.needed <- setdiff(packages.used, 
+                           intersect(installed.packages()[,1], 
+                                     packages.used))
+# install additional packages
+if(length(packages.needed) > 0){
+  install.packages(packages.needed, dependencies = TRUE)
+}
+
+
 library(shiny)
 library(shinydashboard)
 library(leaflet)
+library(shinyWidgets)
 
 ####
 r_colors <- rgb(t(col2rgb(colors()) / 255))

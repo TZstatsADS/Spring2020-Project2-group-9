@@ -1,8 +1,18 @@
 # server
+packages.used <- c("shiny","leaflet")
+# check packages that need to be installed.
+packages.needed <- setdiff(packages.used, 
+                           intersect(installed.packages()[,1], 
+                                     packages.used))
+# install additional packages
+if(length(packages.needed) > 0){
+   install.packages(packages.needed, dependencies = TRUE)
+}
+
+
 library(shiny)
 library(leaflet)
 library(readr)
-library(lubridate)
 shinyServer(function(input,output, session){
    load("../data/na_drop.RData")
    na_drop$`Posting Date` <- as.Date(na_drop$`Posting Date`, "%m/%d/%Y")

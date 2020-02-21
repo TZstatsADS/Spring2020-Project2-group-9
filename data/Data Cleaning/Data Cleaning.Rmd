@@ -110,6 +110,8 @@ na_drop_jobs <- na_drop_jobs %>% select(-`Civil Service Title`, -`Job Category`)
 names(jobs_no_borough)[c(3,4)] <- c("num_positions", "Full/Part")
 names(na_drop_jobs)[c(3,4)] <- c("num_positions", "Full/Part")
 write_csv(na_drop_jobs, "../../data/na_drop.csv")
-save(na_drop_jobs, file = "../../data/na_drop.RData")
+na_drop <- na_drop_jobs
+save(na_drop, file = "../../data/na_drop.RData")
+# load("../../data/na_drop.RData")
 ```
   

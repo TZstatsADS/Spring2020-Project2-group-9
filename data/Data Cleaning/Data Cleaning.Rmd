@@ -84,6 +84,15 @@ title_category <- cbind(df, latlon)
 
 ```
 
+The average working time in the US is 2080 hours per year.  
+The average working time in the US is 260 days per year.   
+  
+```{r}
+title_category$`Salary Range To`[title_category$`Salary Frequency` == "Hourly"] <- title_category$`Salary Range To`[title_category$`Salary Frequency` == "Hourly"] * 2080
+title_category$`Salary Range To`[title_category$`Salary Frequency` == "Daily"] <- title_category$`Salary Range To`[title_category$`Salary Frequency` == "Daily"] * 260
+title_category <- title_category %>% select(-`Salary Range From`, -`Salary Frequency`)
+```
+
 ```{r}
 library(sf)
 title_category <- title_category %>% na.omit()
@@ -100,7 +109,7 @@ jobs_no_borough <- jobs_no_borough %>% select(-`Civil Service Title`, -`Job Cate
 na_drop_jobs <- na_drop_jobs %>% select(-`Civil Service Title`, -`Job Category`)
 names(jobs_no_borough)[c(3,4)] <- c("num_positions", "Full/Part")
 names(na_drop_jobs)[c(3,4)] <- c("num_positions", "Full/Part")
-# write_csv(jobs_no_borough, "../../data/jobs_no_borough.csv")
-# write_csv(na_drop_jobs, "../../data/na_drop.csv")
+write_csv(na_drop_jobs, "../../data/na_drop.csv")
+save(na_drop_jobs, file = "../../data/na_drop.RData")
 ```
-
+  

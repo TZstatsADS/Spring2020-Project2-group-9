@@ -29,4 +29,23 @@ shinyServer(function(input,output, session){
      
    })
 
+# Jonson plot begin ========================================================================================
+   output$job_salary_box <- renderPlotly({
+      ggplotly(figure_salary_box)
+   })
+   output$job_salary_col <- renderPlotly({
+      ggplotly(figure_salary_col)
+   })
+   output$job_time_count <- renderPlotly({
+      ggplotly(figure_time)
+   })
+   output$job_salary_count <- renderPlotly({
+      ggplotly(figure_salary_count)
+   })
+
+   
+# Johnson  plot end=======================================================================================
+   
+   
+   
 })

@@ -1,4 +1,7 @@
 # UI
+library(plotly)
+library(shinythemes)
+
 # Load all the required libraries 
 packages.used <- c("shiny", "shinydashboard", 
                    "leaflet", "shinyWidgets")
@@ -30,7 +33,7 @@ dashboardPage(
     menuItem("Home", tabName = "Home", icon = icon("dashboard")),
     menuItem("MAP", tabName = "MAP", icon = icon("compass")),
     menuItem("Facts", tabName = "Facts", icon = icon("dashboard")),
-    menuItem("Statistical Analysis", tabName = "Statistical Analysis", icon = icon("industry")),
+    menuItem("Report", tabName = "Report", icon = icon("industry")),
     menuItem("Job search", tabName = "job search", icon = icon("industry"))
   )),
   dashboardBody(tabItems(
@@ -84,9 +87,36 @@ dashboardPage(
                             
               )
             )
-    )
+    ),
+    
     ### MAP Part Done
     
-  )
-  )
-  )
+  ### Johnson statistical analysis part begin-------------------------------------------------
+  tabItem(tabName = "Report",
+          fluidPage(
+            fluidRow(column(12,
+                            h3("Interactive Dashboard"),
+                            "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
+                            tags$div(tags$ul(
+                              tags$li("*****"),
+                              tags$li("*****")
+                            )),
+                            #htmlOutput("d3"))),
+                            fluidRow(column(width =  12, title = "Salary Range Statistics by different job category(box plot)", 
+                                            plotlyOutput("job_salary_box"))) ,
+                            fluidRow(column(width =  12, title = "Salary Range Statistics by different job category(bar plot)", 
+                            plotlyOutput("job_salary_col"))),
+                            fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
+                                            plotlyOutput("job_time_count"))),
+                            fluidRow(column(width =  12, title = "Salary level of jobs from 2013 to 2020", 
+                                            plotlyOutput("job_salary_count")))
+                            
+            
+            ))))
+            
+    
+  ### Johnson statistical analysis part end------------------------------------------------
+
+)
+)
+)

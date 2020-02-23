@@ -57,7 +57,7 @@ dashboardPage(
  
               leafletOutput("map",width="100%",height=750),
               absolutePanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
-                            top = 140, left = 250, right = "auto", bottom = "auto", width = 250, height = "auto",
+                            top = 140, left = "auto", right = "auto", bottom = "auto", width = 250, height = "auto",
                 checkboxGroupInput("category", "Choose Category:",
                                  choices = c("Operation & Maintenance", "Finance","Public Safety",
                                         "Clerical & Administrative Support", "Technology & Data",

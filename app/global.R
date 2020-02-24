@@ -57,3 +57,56 @@ figure_salary_count
 
 
 ###Johnson Zhang end======================================================
+###Stephen Li begin=====================================================
+##arrange the job by available
+arrange_by_available<-job_data%>%arrange(desc(`num_positions`))
+#first we figure out the top 10 job title arrange by job title
+job_title_available<-arrange_by_available%>%select(num_positions,title)%>%mutate(num_positions=sum(num_positions))%>%group_by(title,add=T)%>%
+  mutate(num_positions=sum(num_positions))%>%
+  arrange(desc(num_positions))%>%distinct(num_positions)
+job_title_available_10<-job_title_available[1:9,]%>%ungroup(title)%>%mutate(title=factor(title,levels=rev(title)))
+#then we figure out the agency of top 10 avilable job
+agency_availabe<-arrange_by_available%>%select(num_positions,Agency)%>%mutate(num_positions=sum(num_positions))%>%group_by(Agency,add=T)%>%
+  mutate(num_positions=sum(num_positions))%>%
+  arrange(desc(num_positions))%>%distinct(num_positions)
+agency_availabe_10<-agency_availabe[1:9,]%>%ungroup(Agency)%>%mutate(Agency=factor(Agency,levels=rev(Agency)))
+##arrange the job by salary
+arrange_by_salary<-job_data%>%arrange(desc(`Salary Range To`))
+#also first we figure out the top 10 job title with highest salary
+job_title_salary<-arrange_by_salary%>%select(`Salary Range To`,title)%>%group_by(title)%>%arrange(desc(`Salary Range To`))%>%
+  mutate(`Salary Range To`=max(`Salary Range To`))%>%distinct(`Salary Range To`)
+job_title_salary_10<-job_title_salary[1:9,]%>%ungroup(title)%>%mutate(title=factor(title,levels=rev(title)))
+#also figure out the agency of top 10 salary
+agency_salary<-arrange_by_salary%>%select(`Salary Range To`,Agency)%>%group_by(Agency)%>%arrange(desc(`Salary Range To`))%>%
+  mutate(`Salary Range To`=max(`Salary Range To`))%>%distinct(`Salary Range To`)
+agency_salary_10<-agency_salary[1:9,]%>%ungroup(Agency)%>%mutate(Agency=factor(Agency,levels=rev(Agency)))
+#then we plot the picture we need
+#1
+available_title<-ggplot(job_title_available_10,aes(x=title,y=num_positions,fill=title)) +
+  geom_bar(stat='identity')+ scale_fill_brewer()+
+  coord_flip()+ 
+  geom_text(aes(label = num_positions, vjust = 0.5, hjust = -0.2))+ 
+  theme(legend.position='none')+  
+  ylim(0,2000000)+theme_light()+labs(title="Top's available Job Title",y="Title",x="Positions Number")  
+#2
+available_agency<-ggplot(agency_availabe_10,aes(x=Agency,y=num_positions,fill=Agency)) +
+  geom_bar(stat='identity')+ scale_fill_brewer()+
+  coord_flip()+ 
+  geom_text(aes(label = num_positions, vjust = 0.5, hjust = -0.2))+ 
+  theme(legend.position='none')+  
+  ylim(0,4004145)+theme_light()+labs(title="Top's available Job Agency",y="Agency",x="Positions Number")  
+#3
+salary_title<-ggplot(job_title_salary_10,aes(x=title,y=`Salary Range To`,fill=title)) +
+  geom_bar(stat='identity')+ scale_fill_brewer()+
+  coord_flip()+ 
+  geom_text(aes(label = `Salary Range To`, vjust = 0.5, hjust = -0.2))+ 
+  theme(legend.position='none')+  
+  ylim(0,300000)+theme_light()+labs(title="Top's Salary Job Title",y="Title",x="Salary")  
+#4
+salary_agency<-ggplot(agency_salary_10,aes(x=Agency,y=`Salary Range To`,fill=Agency)) +
+  geom_bar(stat='identity')+ scale_fill_brewer()+
+  coord_flip()+ 
+  geom_text(aes(label = `Salary Range To`, vjust = 0.5, hjust = -0.2))+ 
+  theme(legend.position='none')+  
+  ylim(0,300000)+theme_light()+labs(title="Top's Salary Job Agency",y="Agency",x="Salary")  
+###Stephen Li =====================================================

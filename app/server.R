@@ -13,6 +13,7 @@ if(length(packages.needed) > 0){
 library(shiny)
 library(leaflet)
 library(readr)
+library(wordcloud2)
 shinyServer(function(input,output, session){
    load("../data/na_drop.RData")
 # Ran map begin ========================================================================================   
@@ -52,6 +53,20 @@ shinyServer(function(input,output, session){
 
    
 # Johnson  plot end=======================================================================================
+   # Stephen plot begin ========================================================================================
+   output$avai_title<- renderPlotly({
+      ggplotly(available_title)
+   })
+   output$avai_agen<- renderPlotly({
+      ggplotly(available_agency)
+   })
+   output$salary_title<- renderPlotly({
+      ggplotly(salary_title)
+   })
+   output$salary_agency<- renderPlotly({
+      ggplotly(salary_agency)
+   })
+   # Stephen  plot end=======================================================================================
    
    # home -------------------------------------------------------------------------------------------------------
    ## boxes

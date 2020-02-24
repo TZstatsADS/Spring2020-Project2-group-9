@@ -154,10 +154,37 @@ dashboardPage(
                                             plotlyOutput("job_salary_count")))
                             
             
-            ))))
+            )))),
             
     
   ### Johnson statistical analysis part end------------------------------------------------
+### Stephen statistical analysis part begin------------------------------------------------
+tabItem(tabName = "Facts",
+        fluidPage(
+          fluidRow(
+            (tabBox(
+              width=12,
+              title = "Available Jobs",
+              # The id lets us use input$tabset1 on the server to find the current tab
+              id = "tabset1",
+              tabPanel("Jobs Title", plotlyOutput("avai_title")),
+              tabPanel("Agency", plotlyOutput("avai_agen"))
+            ))),
+          
+          fluidRow(
+            (tabBox(
+              width=12,
+              title = "High Salary",
+              # The id lets us use input$tabset1 on the server to find the current tab
+              tabPanel("Jobs Title", plotlyOutput("salary_title")),
+              tabPanel("Agency", plotlyOutput("salary_agency")))
+            )
+            
+            
+          )
+        )
+)
+### Stephen statistical analysis part end------------------------------------------------
 
 )
 )

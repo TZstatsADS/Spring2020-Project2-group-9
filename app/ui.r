@@ -169,23 +169,7 @@ tabItem(tabName = "Salary",
 #sub1 end---------------------------------------------------------------------------------------           
 
 #sub2 begin----------------------------------------------------------------------------------------
-tabItem(tabName = "Full",
-        fluidPage(
-          fluidRow(column(12,
-                          h3("Interactive Dashboard"),
-                          "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
-                          tags$div(tags$ul(
-                            tags$li("*****"),
-                            tags$li("*****")
-                          )),
-                          
-                          fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
-                                          plotlyOutput("job_salary_col"))),
-                          fluidRow(column(width =  12, title = "Salary level of jobs from 2013 to 2020", 
-                                          plotlyOutput("job_salary_count")))
-                          
-                          
-          )))),
+
 
 #sub2 end-------------------------------------------------------------------------------------------
     

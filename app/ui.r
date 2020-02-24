@@ -1,10 +1,8 @@
 # UI
-library(plotly)
-library(shinythemes)
 
 # Load all the required libraries 
 packages.used <- c("shiny", "shinydashboard", 
-                   "leaflet", "shinyWidgets")
+                   "leaflet", "shinyWidgets","plotly","shinythemes")
 # check packages that need to be installed.
 packages.needed <- setdiff(packages.used, 
                            intersect(installed.packages()[,1], 
@@ -14,7 +12,8 @@ if(length(packages.needed) > 0){
   install.packages(packages.needed, dependencies = TRUE)
 }
 
-
+library(plotly)
+library(shinythemes)
 library(shiny)
 library(shinydashboard)
 library(leaflet)

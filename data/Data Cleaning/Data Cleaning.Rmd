@@ -59,7 +59,7 @@ df <- df %>% mutate(title = case_when(
   `Civil Service Title` %>% str_detect("ADMINISTRAT|DEPUTY COMMISSIONER") == 1 ~ "Administration",
   `Civil Service Title` %>% str_detect("SUPERVISOR") == 1 ~ "Supervisor",
   `Civil Service Title` %>% str_detect("GEOLOGIST") == 1 ~ "Geologist",
-  `Civil Service Title` %>% str_detect("CLAIM SPECIALIST|CLERICAL ASSOCIATE") == 1 ~ "Claim Assoviate",
+  `Civil Service Title` %>% str_detect("CLAIM SPECIALIST|CLERICAL ASSOCIATE") == 1 ~ "Claim Associate",
   `Civil Service Title` %>% str_detect("CHEMIST|LABORATORY") == 1 ~ "Chemist/Microbiologist"
 ), category = case_when(
   `Job Category` %>% str_detect("MAINTENANCE") == 1 ~ "Operation & Maintenance",
@@ -90,7 +90,9 @@ The average working time in the US is 260 days per year.
 ```{r}
 title_category$`Salary Range To`[title_category$`Salary Frequency` == "Hourly"] <- title_category$`Salary Range To`[title_category$`Salary Frequency` == "Hourly"] * 2080
 title_category$`Salary Range To`[title_category$`Salary Frequency` == "Daily"] <- title_category$`Salary Range To`[title_category$`Salary Frequency` == "Daily"] * 260
-title_category <- title_category %>% select(-`Salary Range From`, -`Salary Frequency`)
+title_category$`Salary Range From`[title_category$`Salary Frequency` == "Hourly"] <- title_category$`Salary Range From`[title_category$`Salary Frequency` == "Hourly"] * 2080
+title_category$`Salary Range From`[title_category$`Salary Frequency` == "Daily"] <- title_category$`Salary Range From`[title_category$`Salary Frequency` == "Daily"] * 260
+title_category <- title_category %>% select(-`Salary Frequency`)
 ```
 
 ```{r}

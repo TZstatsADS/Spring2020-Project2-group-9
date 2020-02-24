@@ -57,7 +57,7 @@ dashboardPage(
     # MAP
     tabItem(tabName = "MAP",
             fluidPage(
- 
+ ### Ran map ui begin -------------------------------------------------------------------------------------
               leafletOutput("map",width="100%",height=750),
               absolutePanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
                             top = 140, left = "auto", right = "auto", bottom = "auto", width = 250, height = "auto",
@@ -89,7 +89,7 @@ dashboardPage(
             )
     ),
     
-    ### MAP Part Done
+### Ran MAP Part Done -------------------------------------------------------------
     
   ### Johnson statistical analysis part begin-------------------------------------------------
   tabItem(tabName = "Report",

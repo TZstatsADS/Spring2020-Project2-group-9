@@ -15,6 +15,7 @@ library(leaflet)
 library(readr)
 shinyServer(function(input,output, session){
    load("../data/na_drop.RData")
+# Ran map begin ========================================================================================   
    na_drop$`Posting Date` <- as.Date(na_drop$`Posting Date`, "%m/%d/%Y")
    
    category <- reactive(na_drop[which(na_drop$category %in% input$category & na_drop$`Full/Part` %in% input$`Full/Part`&
@@ -23,9 +24,15 @@ shinyServer(function(input,output, session){
 
    output$map <- renderLeaflet({
      map <- leaflet() %>% setView(-73.9578,40.72348,zoom = 11) %>% addTiles() %>% addCircleMarkers(lng = category()$lon, lat = category()$lat, 
-                                                          clusterOptions = markerClusterOptions()) %>%
+           clusterOptions = markerClusterOptions(), popup = paste("<b>", "Job Title:", category()$title, 
+                                                                  "<br/>", "<b>", "Salary Range in USD:", category()$`Salary Range From`, "to", category()$`Salary Range To`,
+                                                                  "<br/>", "<b>", "Agency:", category()$Agency, 
+                                                                  "<br/>", "<b>", "Posting Date:", category()$`Posting Date`,
+                                                                  "<br/>", "<b>", "Level:", category()$`Career Level`,
+                                                                  "<br/>", "<b>", "Number of Positions Offered:", category()$num_positions,
+                                                                  "<br/>", "<b>", "Full/Part Time:", category()$`Full/Part`)) %>%
        addProviderTiles(providers$CartoDB.Positron)
-     
+# Ran map end ========================================================================================     
      
    })
 

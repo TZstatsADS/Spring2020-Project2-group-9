@@ -33,7 +33,11 @@ dashboardPage(
     menuItem("Home", tabName = "Home", icon = icon("dashboard")),
     menuItem("MAP", tabName = "MAP", icon = icon("compass")),
     menuItem("Facts", tabName = "Facts", icon = icon("industry")),
-    menuItem("Statistical Analysis", tabName = "Report", icon = icon("pencil-ruler")),
+    menuItem("Report", tabName = "Report", icon = icon("pencil-ruler"),startExpanded = TRUE,
+             menuSubItem("Salary",tabName = "Salary", icon = icon("industry")),
+             menuSubItem("Full",tabName = "Full"),
+             menuSubItem("Other",tabName = "Other")        
+             ),
     menuItem("Job search", tabName = "job", icon = icon("clipboard")),
     menuItem("About", tabName = "intro", icon = icon("sign-out"))
   )),
@@ -140,8 +144,9 @@ dashboardPage(
     
 ### Ran MAP Part Done -------------------------------------------------------------
     
-  ### Johnson statistical analysis part begin-------------------------------------------------
-  tabItem(tabName = "Report",
+### Johnson statistical analysis part begin-------------------------------------------------
+#sub1 begin---------------------------------------------------------------------------------------   
+tabItem(tabName = "Salary",
           fluidPage(
             fluidRow(column(12,
                             h3("Interactive Dashboard"),
@@ -150,21 +155,39 @@ dashboardPage(
                               tags$li("*****"),
                               tags$li("*****")
                             )),
-                            #htmlOutput("d3"))),
-                            fluidRow(column(width =  12, title = "Salary Range Statistics by different job category(box plot)", 
-                                            plotlyOutput("job_salary_box"))) ,
-                            fluidRow(column(width =  12, title = "Salary Range Statistics by different job category(bar plot)", 
-                            plotlyOutput("job_salary_col"))),
+                          
                             fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
-                                            plotlyOutput("job_time_count"))),
+                                            plotlyOutput("job_salary_col"))),
                             fluidRow(column(width =  12, title = "Salary level of jobs from 2013 to 2020", 
                                             plotlyOutput("job_salary_count")))
                             
             
             )))),
-            
+ 
+#sub1 end---------------------------------------------------------------------------------------           
+
+#sub2 begin----------------------------------------------------------------------------------------
+tabItem(tabName = "Full",
+        fluidPage(
+          fluidRow(column(12,
+                          h3("Interactive Dashboard"),
+                          "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
+                          tags$div(tags$ul(
+                            tags$li("*****"),
+                            tags$li("*****")
+                          )),
+                          
+                          fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
+                                          plotlyOutput("job_salary_col"))),
+                          fluidRow(column(width =  12, title = "Salary level of jobs from 2013 to 2020", 
+                                          plotlyOutput("job_salary_count")))
+                          
+                          
+          )))),
+
+#sub2 end-------------------------------------------------------------------------------------------
     
-  ### Johnson statistical analysis part end------------------------------------------------
+### Johnson statistical analysis part end------------------------------------------------
 ### Stephen statistical analysis part begin------------------------------------------------
 tabItem(tabName = "Facts",
         fluidPage(

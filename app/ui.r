@@ -79,7 +79,7 @@ dashboardPage(
                 background:url('../nyc1.jpg') no-repeat;width:1500px;height:500px
                 }
 
-                "),box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE,
+                ")),box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE,
                          mainPanel(
                            wordcloud2Output(outputId = "WC1", height = "300",width = "550"))
             )),

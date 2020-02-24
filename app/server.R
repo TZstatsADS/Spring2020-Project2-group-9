@@ -104,7 +104,7 @@ shinyServer(function(input,output, session){
    
    output$WC1 <- renderWordcloud2({
       test %>%
-         wordcloud2(figPath = "www/nyc-letter.jpg",size = 1.25,,shape = "circle",color='skyblue')
+         wordcloud2(size = 1.25,shape = "circle",color='skyblue')
    })
    
    

@@ -2,7 +2,7 @@
 
 # Load all the required libraries 
 packages.used <- c("shiny", "shinydashboard", 
-                   "leaflet", "shinyWidgets","plotly","shinythemes")
+                   "leaflet", "shinyWidgets","plotly","shinythemes","wordcloud2")
 # check packages that need to be installed.
 packages.needed <- setdiff(packages.used, 
                            intersect(installed.packages()[,1], 
@@ -18,7 +18,7 @@ library(shiny)
 library(shinydashboard)
 library(leaflet)
 library(shinyWidgets)
-
+library(wordcloud2)
 ####
 r_colors <- rgb(t(col2rgb(colors()) / 255))
 names(r_colors) <- colors()
@@ -72,7 +72,14 @@ dashboardPage(
               valueBoxOutput("total_position"),
               valueBoxOutput("max_salary")
             ),
-            fluidRow(box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE,
+            fluidRow(tags$style(HTML("
+
+                .box.box-solid.box-primary{
+
+                background:url('../nyc1.jpg') no-repeat;width:1500px;height:500px
+                }
+
+                "),box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE,
                          mainPanel(
                            wordcloud2Output(outputId = "WC1", height = "300",width = "550"))
             )),

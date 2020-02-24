@@ -1,5 +1,5 @@
 # server
-packages.used <- c("shiny","leaflet")
+packages.used <- c("shiny","leaflet", "wordcloud2")
 # check packages that need to be installed.
 packages.needed <- setdiff(packages.used, 
                            intersect(installed.packages()[,1], 

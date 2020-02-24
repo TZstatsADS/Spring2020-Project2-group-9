@@ -77,8 +77,8 @@ dashboardPage(
               valueBoxOutput("max_salary")
             ),
             fluidRow(box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE, align = "bottom",
-                         mainPanel(
-                           wordcloud2Output(outputId = "WC1", height = "340",width = "560"))
+                        mainPanel(
+                          wordcloud2Output(outputId = "WC1", height = "340",width = "560"))
             ),
             tags$style(HTML("
 

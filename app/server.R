@@ -35,7 +35,33 @@ shinyServer(function(input,output, session){
        addProviderTiles(providers$CartoDB.Positron)
 # Ran map end ========================================================================================     
      
+
+   }
+)
+   observeEvent(input$select_all, {
+      updateCheckboxGroupInput(session, "category",
+                               choices = c("Operation & Maintenance", "Finance","Public Safety",
+                                           "Clerical & Administrative Support", "Technology & Data",
+                                           "Community","Social Service","Health","Policy, Research & Analysis",
+                                           "Engineering, Architecture, & Planning","Communications & Intergovernmental",
+                                           "Legal"),
+                               selected =c("Operation & Maintenance", "Finance","Public Safety",
+                                           "Clerical & Administrative Support", "Technology & Data",
+                                           "Community","Social Service","Health","Policy, Research & Analysis",
+                                           "Engineering, Architecture, & Planning","Communications & Intergovernmental",
+                                           "Legal")
+      )
    })
+   observeEvent(input$select_none, {
+      updateCheckboxGroupInput(session, "category",
+                               choices = c("Operation & Maintenance", "Finance","Public Safety",
+                                           "Clerical & Administrative Support", "Technology & Data",
+                                           "Community","Social Service","Health","Policy, Research & Analysis",
+                                           "Engineering, Architecture, & Planning","Communications & Intergovernmental",
+                                           "Legal"),
+                               selected = NULL)
+   })
+   
 
 # Jonson plot begin ========================================================================================
    output$job_salary_box <- renderPlotly({

@@ -72,17 +72,19 @@ dashboardPage(
               valueBoxOutput("total_position"),
               valueBoxOutput("max_salary")
             ),
-            fluidRow(tags$style(HTML("
+            fluidRow(box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE, align = "bottom",
+                         mainPanel(
+                           wordcloud2Output(outputId = "WC1", height = "340",width = "560"))
+            ),
+            tags$style(HTML("
 
                 .box.box-solid.box-primary{
 
-                background:url('../nyc1.jpg') no-repeat;width:1500px;height:500px
+                background:url('../nyc-banner.jpg') no-repeat;width:1180px;height:400px
                 }
 
-                ")),box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE,
-                         mainPanel(
-                           wordcloud2Output(outputId = "WC1", height = "300",width = "550"))
-            )),
+                "))
+            ),
             fluidRow(box(width = 6,h2(strong("Make a difference"),align = "center"),
                          background = "teal",solidHeader = TRUE,
                          h3(hr()),

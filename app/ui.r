@@ -27,32 +27,75 @@ load("../data/na_drop.RData")
 na_drop$`Posting Date` <- as.Date(na_drop$`Posting Date`, "%m/%d/%Y")
 
 dashboardPage(
+  skin = "blue",
   dashboardHeader(title = "NYC Government Job Posting"),
   dashboardSidebar(sidebarMenu(
     menuItem("Home", tabName = "Home", icon = icon("dashboard")),
     menuItem("MAP", tabName = "MAP", icon = icon("compass")),
-    menuItem("Facts", tabName = "Facts", icon = icon("dashboard")),
-    menuItem("Report", tabName = "Report", icon = icon("industry")),
-    menuItem("Job search", tabName = "job search", icon = icon("industry"))
+    menuItem("Facts", tabName = "Facts", icon = icon("industry")),
+    menuItem("Statistical Analysis", tabName = "Report", icon = icon("pencil-ruler")),
+    menuItem("Job search", tabName = "job", icon = icon("clipboard")),
+    menuItem("About", tabName = "intro", icon = icon("sign-out"))
   )),
   dashboardBody(tabItems(
-    #home
-    tabItem(tabName = "Home",
+    ## test
+    tabItem(tabName = "intro",
             fluidPage(
-              fluidRow(
-                box(width = 15, title = "Introduction", status = "warning",
-                    solidHeader = TRUE, h3("NYC Government Job Posting"),
-                    h4("By Mengying Shi, XXXXXXXXXXXXX"),
-                    h5("Introduction"),
-                    h5("XXXXXXXXX"))),
-              fluidRow(box(width = 15, title = "web decribtion", status = "warning",
-                           solidHeader = TRUE, h3("What Does This Map Do?"),
-                           tags$div(tags$ul(
-                             tags$li("MAP: "),
-                             tags$li("DashBoard: "),
-                             tags$li("Explore:")
-                           ))))
+              mainPanel( width=12,
+                         img(src="../career.jpg", width = "100%", height = "100%"),
+                         
+                         h1(strong("What you'll find here"),align = "center"),
+                         h5("An interactive tool to help you explore the actual paths employees have taken during their County 
+                         careers. With information about the popularity of certain paths, salary differences, 
+                         and more, you can build your own path based on what is meaningful to you.",align = "center"),
+                         hr(),
+                         br(),
+                         h1("How it can help you",align = "center"),
+                         h5("An interactive tool to help you explore the actual paths employees have taken during their County 
+                         careers. With information about the popularity of certain paths, salary differences, 
+                         and more, you can build your own path based on what is meaningful to you.",align = "center")
+              )),
+            
+    ),
+    
+    
+    
+    
+    
+    
+    
+    ##
+    #home --------------------------------------------------------------------------------------------------------
+    tabItem(tabName = "Home",
+            fluidRow(
+              valueBoxOutput("total_title"),
+              valueBoxOutput("total_position"),
+              valueBoxOutput("max_salary")
+            ),
+            fluidRow(box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE,
+                         mainPanel(
+                           wordcloud2Output(outputId = "WC1", height = "300",width = "550"))
             )),
+            fluidRow(box(width = 6,h2(strong("Make a difference"),align = "center"),
+                         background = "teal",solidHeader = TRUE,
+                         h3(hr()),
+                         h4("City government is filled with opportunities for talented people 
+                            who want to improve their communities and make an important difference 
+                            in the lives of their fellow New Yorkers.")),
+                     column(width = 6,img(src="../nyc1.jpg",width = "100%", height = 220),align = "left")
+            ),
+            fluidRow(column(width = 6,img(src="../nyc2.png",width = "100%", height = 250),align = "right"),h3(hr()),
+                     solidHeader = TRUE,
+                     box(side = "left",width = 6,h2(strong("Do what you're passionate about"),align = "center"),
+                         background = "navy",
+                         
+                         h4("Are you interested in public health, community engagement, 
+                            or disaster response? From civil engineering to forestry 
+                            and technology innovation, we have it all."))
+            )
+            
+    ),   
+    #home end --------------------------------------------------------------------------------------------------------
     # MAP
     tabItem(tabName = "MAP",
             fluidPage(

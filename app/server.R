@@ -53,6 +53,48 @@ shinyServer(function(input,output, session){
    
 # Johnson  plot end=======================================================================================
    
+   # home -------------------------------------------------------------------------------------------------------
+   ## boxes
+   output$total_title <- renderValueBox({
+      na_drop %>%
+         n_distinct(title)%>%
+         valueBox(subtitle = "Total Types of Job Titles",
+                  icon = icon("user-circle"),
+                  color = "purple")
+   })
+   
+   output$total_position <- renderValueBox({
+      na_drop %>%
+         summarise(total_position = sum(num_positions))%>%
+         .$total_position %>%
+         valueBox(subtitle = "Total # of Positions",
+                  icon = icon("building"),
+                  color = "orange")
+   })
+   
+   output$max_salary <- renderValueBox({
+      na_drop %>%
+         summarise(max_salary = max(`Salary Range To`))%>%
+         .$max_salary %>%
+         scales::dollar() %>% 
+         valueBox(subtitle = "Max Annually Salary",
+                  icon = icon("hourglass-half"),
+                  color = "green")
+   })
+   
+   ## wordcloud
+   test <- na_drop %>%
+      count(title,sort = T)%>%
+      top_n(300)
+   
+   output$WC1 <- renderWordcloud2({
+      test %>%
+         wordcloud2(figPath = "www/nyc-letter.jpg",size = 1.25,,shape = "circle",color='skyblue')
+   })
+   
+   
+   # home end -----------------------------------------------------------------------------------------------------
+   
    
    
 })

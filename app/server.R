@@ -171,9 +171,9 @@ shinyServer(function(input,output, session){
    
    output$WC1 <- renderWordcloud2({
       test %>%
-         wordcloud2(shape = "circle",color='skyblue', backgroundColor = "transparent")
+         wordcloud2(shape = "circle",color='orange', backgroundColor = "transparent")
    })
-   
+  
    
    # Mengying home end -----------------------------------------------------------------------------------------------------
    

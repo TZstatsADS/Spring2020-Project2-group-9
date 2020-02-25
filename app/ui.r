@@ -71,33 +71,33 @@ dashboardPage(
               valueBoxOutput("total_position"),
               valueBoxOutput("max_salary")
             ),
-            fluidRow(box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE, align = "bottom",
-                        mainPanel(
-                          wordcloud2Output(outputId = "WC1", height = "340",width = "560"))
+            fluidRow(box(width = 12,title = "Word Cloud of Job Title",status = "primary",solidHeader = TRUE,
+                         mainPanel(
+                           wordcloud2Output(outputId = "WC1", height = "380",width = "520"))
             ),
             tags$style(HTML("
 
                 .box.box-solid.box-primary{
 
-                background:url('../nyc-banner.jpg') no-repeat;width:1180px;height:400px
+                background:url('../nyc8.jpg') no-repeat;background-size: 100% 100%;opacity: 0.85
                 }
 
                 "))
             ),
-            fluidRow(box(width = 6,h2(strong("Make a difference"),align = "center"),
+            fluidRow(box(width = 6,height = "50%",h2(strong("Make a difference"),align = "center"),
                          background = "teal",solidHeader = TRUE,
                          h3(hr()),
-                         h4("City government is filled with opportunities for talented people 
+                         h3("City government is filled with opportunities for talented people 
                             who want to improve their communities and make an important difference 
                             in the lives of their fellow New Yorkers.")),
-                     column(width = 6,img(src="../nyc1.jpg",width = "100%", height = 220),align = "left")
+                     column(width = 6,img(src="../nyc1.jpg",width = "100%", height = "35%"),align = "left")
             ),
-            fluidRow(column(width = 6,img(src="../nyc2.png",width = "100%", height = 250),align = "right"),h3(hr()),
+            fluidRow(column(width = 6,img(src="../nyc2.png",width = "100%", height = "35%"),align = "right"),h3(hr()),
                      solidHeader = TRUE,
                      box(side = "left",width = 6,h2(strong("Do what you're passionate about"),align = "center"),
-                         background = "navy",
+                         background = "navy",hr(),
                          
-                         h4("Are you interested in public health, community engagement, 
+                         h3("Are you interested in public health, community engagement, 
                             or disaster response? From civil engineering to forestry 
                             and technology innovation, we have it all."))
             )
@@ -242,8 +242,8 @@ tabItem(tabName = "Other",
 
 #Job search -----------------------------------------------------------------------------------------
   tabItem(tabName = "job",
-            fluidPage(box(width = 12,height = 300,status = "info",searchInput("job_table",
-                                    h2(strong(br(),br(),"Find A Job in New York City Government:",align = "center"), style = "color:white"),
+            fluidPage(box(width = 12,height = 350,status = "info",searchInput("job_table",
+                                    h2(strong(br(),br(),br(),"Find A Job in New York City Government:",align = "center"), style = "color:white"),
                                     btnSearch = icon("search"))),
                       tags$style(HTML(".box.box-info{
                         background:url('../nyc7.png');background-size: 100% 100%;opacity: 0.9}")),

@@ -152,7 +152,7 @@ p <- plot_ly() %>%
          grid=list(rows=2, columns=2),
          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-p
+#p
 
 #pie_chart
 
@@ -161,15 +161,15 @@ p
 data_agency = aggregate(data$num_positions, by = list(Category = data$Agency), FUN=sum)
 colnames(data_agency) = c("Agency","Amount")
 
-q <- data_agency %>%
-  group_by(Agency) %>%
-  plot_ly(labels = ~Agency, values = ~Amount) %>%
-  add_pie(hole = 0.7) %>%
-  layout(title = "Number of positons by Agency",  showlegend = F,
-         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-
-#q
+# q <- data_agency %>%
+#   group_by(Agency) %>%
+#   plot_ly(labels = ~Agency, values = ~Amount) %>%
+#   add_pie(hole = 0.7) %>%
+#   layout(title = "Number of positons by Agency",  showlegend = F,
+#          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+#          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+# 
+# q
 
 ### Suzie plot end ========================================================
 

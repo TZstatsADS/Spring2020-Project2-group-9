@@ -111,9 +111,9 @@ shinyServer(function(input,output, session){
       ggplotly(p)
    })
    
-   output$job_donut <- renderPlotly({
-       ggplotly(q)
-    })
+   # output$job_donut <- renderPlotly({
+   #    ggplotly(q)
+   # })
    
 
 

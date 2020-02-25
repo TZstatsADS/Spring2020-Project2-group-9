@@ -173,8 +173,8 @@ tabItem(tabName = "Salary",
                             h3("Interactive Dashboard"),
                             "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
                             tags$div(tags$ul(
-                              tags$li("*****"),
-                              tags$li("*****")
+                              tags$li("The first dot chart demonstrates the salary of different career levels in various categories. "),
+                              tags$li("The second bar plot shows the number of government jobs available with a specific salary range in different years.")
                             )),
                           
                             fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
@@ -194,8 +194,8 @@ tabItem(tabName = "Full",
                           h3("Interactive Dashboard"),
                           "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
                           tags$div(tags$ul(
-                            tags$li("*****"),
-                            tags$li("*****")
+                            tags$li("The pie charts indicate that most of the jobs available are full-time, experienced-hire in the community and technology data category in Manhatton."),
+                            tags$li("The donut chart illustrates that the department of environmental protection hires most people among other agencies.")
                           )),
                           
                           fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 

@@ -30,18 +30,34 @@ figure_salary_box <- ggplot(job_salary, aes(x = category, y = `Salary Range To`,
   geom_boxplot()
 #figure_salary_box 
 
-figure_salary_col <- ggplot(job_salary, aes(x = category, y = `Salary Range To`, color = `Career Level`)) +
-  geom_point() + labs(y = "salary")
+
+
+
+figure_salary_col <- ggplot(job_salary, aes(x = category, y = `Salary Range To`, color = `Career Level`))  +
+  geom_point() +labs(y = NULL, x = NULL) +  theme(axis.text.x = element_text(angle = 0)) +
+  coord_flip() +  theme(
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    plot.background = element_rect(fill = "transparent",colour = NA))
+figure_salary_col +theme(legend.background = element_rect(colour = 'transparent', fill = 'transparent', size = 3, linetype='dashed'),
+                         legend.key = element_rect(colour = "transparent", fill = "white"))
+  
 figure_salary_col
 
 
-figure_time <- ggplot(job_data_year, aes(x = year, fill =`Full/Part` ))+ geom_bar() 
+figure_time <- ggplot(job_data_year, aes(x = year, fill =`Full/Part` ))+ geom_bar() + scale_fill_brewer()+theme(
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  panel.grid.minor = element_blank(),
+  panel.grid.major = element_blank(),
+  plot.background = element_rect(fill = "transparent",colour = NA)) +
+  theme(legend.background = element_rect(colour = 'transparent', fill = 'transparent', size = 3, linetype='dashed'))
 figure_time 
 
 job_salary_factor <- job_data_year %>% 
   dplyr::select(`Job ID`,`Full/Part`,`year`,`Career Level`,"salary" = `Salary Range To`) %>%
   mutate(salary_range = cut(salary, breaks = c(0,30000,50000,70000,100000,120000,150000,200000,300000))) %>%
-  mutate(salary_range = fct_recode(salary_range, "below 3000" = "(0,3e+04]",
+  mutate(salary_range = fct_recode(salary_range, "below 30000" = "(0,3e+04]",
                                    "30000~50000" = "(3e+04,5e+04]",
                                    "50000~70000" = "(5e+04,7e+04]",
                                    "70000~100000" = "(7e+04,1e+05]",
@@ -50,13 +66,18 @@ job_salary_factor <- job_data_year %>%
                                    "150000~200000" = "(1.5e+05,2e+05]",
                                    "200000~300000" = "(2e+05,3e+05]"))
 figure_salary_count <- ggplot(job_salary_factor, aes(x = year, fill = salary_range ))+
-                                geom_bar()
+                                geom_bar() + scale_fill_brewer() + theme(
+                                  panel.background = element_rect(fill = "transparent",colour = NA),
+                                  panel.grid.minor = element_blank(),
+                                  panel.grid.major = element_blank(),
+                                  plot.background = element_rect(fill = "transparent",colour = NA))
 figure_salary_count
 
 
 
-
 ###Johnson Zhang end======================================================
+
+
 ###Stephen Li begin=====================================================
 ##arrange the job by available
 arrange_by_available<-job_data%>%arrange(desc(`num_positions`))
@@ -196,11 +217,12 @@ q <- data_agency %>%
   group_by(Agency) %>%
   plot_ly(labels = ~Agency, values = ~Amount) %>%
   add_pie(hole = 0.7) %>%
-  layout(title = "Number of positons by Agency",  showlegend = F,
+  layout(paper_bgcolor='transparent',
+         title = "Number of positons by Agency",  showlegend = F,
          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 
-# q
+ q
 
 ### Suzie plot end ========================================================
 

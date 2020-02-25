@@ -210,7 +210,7 @@ tabItem(tabName = "Salary",
                                                h2(strong(br(),br(),"Find A Job in New York City Government:",align = "center"),
                                                   style = "color:white"))),
                       tags$style(HTML(".box.box-info{
-                        background:url('../nyc7.png');background-size: 100% 100%;background-opacity: 0.80
+                        background:url('../nyc7.png');background-size: 100% 100%;opacity: 0.9
                 }"))     
                       )
 

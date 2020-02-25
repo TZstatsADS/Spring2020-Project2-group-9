@@ -43,15 +43,18 @@ figure_salary_col <- ggplot(job_salary, aes(x = category, y = `Salary Range To`,
 figure_salary_col +theme(legend.background = element_rect(colour = 'transparent', fill = 'transparent', size = 3, linetype='dashed'),
                          legend.key = element_rect(colour = "transparent", fill = "white"))
   
+  
 figure_salary_col
 
 
-figure_time <- ggplot(job_data_year, aes(x = year, fill =`Full/Part` ))+ geom_bar() + scale_fill_brewer()+theme(
+figure_time <- ggplot(job_data_year, aes(x = year, fill =`Full/Part` ))+ geom_bar() +
+  scale_fill_brewer()+theme(
   panel.background = element_rect(fill = "transparent",colour = NA),
   panel.grid.minor = element_blank(),
   panel.grid.major = element_blank(),
   plot.background = element_rect(fill = "transparent",colour = NA)) +
-  theme(legend.background = element_rect(colour = 'transparent', fill = 'transparent', size = 3, linetype='dashed'))
+  theme(legend.background = element_rect(colour = 'transparent', fill = 'transparent', size = 3, linetype='dashed'))+
+  guides(fill=guide_legend(title="Full/Part Time"))
 figure_time 
 
 job_salary_factor <- job_data_year %>% 
@@ -70,7 +73,8 @@ figure_salary_count <- ggplot(job_salary_factor, aes(x = year, fill = salary_ran
                                   panel.background = element_rect(fill = "transparent",colour = NA),
                                   panel.grid.minor = element_blank(),
                                   panel.grid.major = element_blank(),
-                                  plot.background = element_rect(fill = "transparent",colour = NA))
+                                  plot.background = element_rect(fill = "transparent",colour = NA))+
+  guides(fill=guide_legend(title="Salary Range"))
 figure_salary_count
 
 

@@ -39,11 +39,11 @@ dashboardPage(
              menuSubItem("Other",tabName = "Other")        
              ),
     menuItem("Job search", tabName = "job", icon = icon("clipboard")),
-    menuItem("About", tabName = "intro", icon = icon("sign-out"))
+    menuItem("About", tabName = "about", icon = icon("sign-out"))
   )),
-  dashboardBody(tabItems(
-    ## test
-    tabItem(tabName = "intro",
+  dashboardBody(fill = FALSE,tabItems(
+    ## Mengying About --------------------------------------------------------------------------------------------------------
+    tabItem(tabName = "about",
             fluidPage(
               mainPanel( width=12,
                          img(src="../career.jpg", width = "100%", height = "100%"),
@@ -62,14 +62,8 @@ dashboardPage(
             
     ),
     
-    
-    
-    
-    
-    
-    
-    ##
-    #home --------------------------------------------------------------------------------------------------------
+    ## about end --------------------------------------------------------------------------------------------------------
+    #Mengying home --------------------------------------------------------------------------------------------------------
     tabItem(tabName = "Home",
             fluidRow(
               valueBoxOutput("total_title"),
@@ -183,32 +177,45 @@ tabItem(tabName = "Salary",
     
 ### Johnson statistical analysis part end------------------------------------------------
 ### Stephen statistical analysis part begin------------------------------------------------
-tabItem(tabName = "Facts",
-        fluidPage(
-          fluidRow(
-            (tabBox(
-              width=12,
-              title = "Available Jobs",
-              # The id lets us use input$tabset1 on the server to find the current tab
-              id = "tabset1",
-              tabPanel("Jobs Title", plotlyOutput("avai_title")),
-              tabPanel("Agency", plotlyOutput("avai_agen"))
-            ))),
-          
-          fluidRow(
-            (tabBox(
-              width=12,
-              title = "High Salary",
-              # The id lets us use input$tabset1 on the server to find the current tab
-              tabPanel("Jobs Title", plotlyOutput("salary_title")),
-              tabPanel("Agency", plotlyOutput("salary_agency")))
+  tabItem(tabName = "Facts",
+          fluidPage(
+            fluidRow(
+              (tabBox(
+                width=12,
+                title = "Available Jobs",
+                # The id lets us use input$tabset1 on the server to find the current tab
+                id = "tabset1",
+                tabPanel("Jobs Title", plotlyOutput("avai_title")),
+                tabPanel("Agency", plotlyOutput("avai_agen"))
+              ))),
+            
+            fluidRow(
+              (tabBox(
+                width=12,
+                title = "High Salary",
+                # The id lets us use input$tabset1 on the server to find the current tab
+                tabPanel("Jobs Title", plotlyOutput("salary_title")),
+                tabPanel("Agency", plotlyOutput("salary_agency")))
+              )
+              
+              
             )
-            
-            
           )
-        )
-)
+  ),
 ### Stephen statistical analysis part end------------------------------------------------
+
+#Job search -----------------------------------------------------------------------------------------
+  tabItem(tabName = "job",
+            fluidPage(box(width = 12,height = 300,status = "info",textInput('key',
+                                               h2(strong(br(),br(),"Find A Job in New York City Government:",align = "center"),
+                                                  style = "color:white"))),
+                      tags$style(HTML(".box.box-info{
+                        background:url('../nyc7.png');background-size: 100% 100%;background-opacity: 0.80
+                }"))     
+                      )
+
+          )
+# Job search end -----------------------------------------------------------------------------------------
 
 )
 )

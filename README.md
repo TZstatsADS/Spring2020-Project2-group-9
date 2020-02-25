@@ -1,4 +1,17 @@
 # Project 2: Shiny App Development Version 2.0
+![screenshot](doc/home.png)
+
+![screenshot](doc/facts.png)
+
+![screenshot](doc/Salary.png)
+
+![screenshot](doc/Year.png)
+
+![screenshot](doc/Other.png)
+
+![screenshot](doc/Search.png)
+
+![screenshot](doc/About.png)
 
 ### [Project Description](doc/project2_desc.md)
 

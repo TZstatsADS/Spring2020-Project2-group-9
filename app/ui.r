@@ -52,23 +52,19 @@ dashboardPage(
                          h1(strong("What you'll find here"),align = "center"),
                          column(12,
                                 tags$ul(
-                                  tags$li(h5("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
-                                  tags$li(h5("The Workforce and Employee Development team wanted to help others help themselves by providing an online tool that sheds light on the otherwise invisible career paths in the County.")), 
-                                  tags$li(h5("In 2016, the Los Angeles County Quality and Productivity Commission granted the seed money that got the ball rolling.")),
-                                  tags$li(h5("We wanted to augment training provided through the Los Angeles County University by helping people see real career opportunities after taking a course that improved their skills.")),
+                                  tags$li(h5("In this project, we designed a shiny app with information about government job postings in NYC. We want to utilize the visualization tools in R and give potential job seekers information about government jobs in NYC." )), 
+                                  tags$li(h5("By NYC Government Job shiny app, we can easily find the information about job postings, job information and job salary, etc. What's more, we can get personalized information by clicking the option next to the graphs.")), 
                                   tags$li(h5("Now, and into the future, we want to be a magnet for top talent and be an employer of choice."))
                                 )
                          ),
                          br(),
                          h1(strong("About the Data"),align = "center"),
-                         h5("An interactive tool to help you explore the actual paths employees have taken during their County 
-                         careers. With information about the popularity of certain paths, salary differences, 
-                         and more, you can build your own path based on what is meaningful to you.",align = "center"),
+                         h5(" We used the data \"NYC Jobs\" from NYC open data website. We cleaned the data before further exploration. 
+                            
+                            ",align = "center"),
                          br(),
-                         h1(strong("About the team"),align = "center"),
-                         h5("An interactive tool to help you explore the actual paths employees have taken during their County 
-                         careers. With information about the popularity of certain paths, salary differences, 
-                         and more, you can build your own path based on what is meaningful to you.",align = "center")
+                         h1(strong("About the team 9"),align = "center"),
+                         h5("Chen, Shuyi sc4489@columbia.edu; Li, Jia jl5520@columbia.edu; Lu, Ran rl3077@columbia.edu; Shi, Mengying ms5922@columbia.edu; Walters, Ryan rw2532@columbia.edu; Zhang, Zhiyuan zz2677@columbia.edu",align = "center")
               ),
               ),
             
@@ -165,7 +161,7 @@ dashboardPage(
     
 ### Ran MAP Part Done -------------------------------------------------------------
     
-### Johnson statistical analysis part begin-------------------------------------------------
+### Johnson/Suzie statistical analysis part begin-------------------------------------------------
 #sub1 begin---------------------------------------------------------------------------------------   
 tabItem(tabName = "Salary",
           fluidPage(

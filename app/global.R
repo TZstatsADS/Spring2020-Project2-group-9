@@ -127,6 +127,33 @@ colnames(data_category) = c("categories","amount")
 data_borough = as.data.frame(table(data$borough))
 colnames(data_borough) = c("categories","amount") 
 
+# p <- plot_ly() %>%
+#   add_pie(data = data_FUll_Part , labels = ~categories, values = ~amount,
+#           name = "Full_Part",
+#           title = "Part time or Full time",
+#           domain = list(row = 0, column = 0))%>%
+#   
+#   add_pie(data = data_Career_Level , labels = ~categories, values = ~amount,
+#           name = "Caeer Level",
+#           title = "Caeer Level",
+#           domain = list(row = 0, column = 1))%>%
+#   
+#   add_pie(data = data_category , labels = ~categories, values = ~amount,
+#           name = "Category",
+#           title = "Category",
+#           domain = list(row = 1, column = 0))%>%
+#   
+#   add_pie(data = data_borough , labels = ~categories, values = ~amount,
+#           name = "borough",
+#           title = "Borough",
+#           domain = list(row = 1, column = 1))%>%
+#   
+#   layout(title = "Pie Chart Summary of NYC Job Data", showlegend = F,
+#          grid=list(rows=2, columns=2),
+#          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+#          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+#p
+
 p <- plot_ly() %>%
   add_pie(data = data_FUll_Part , labels = ~categories, values = ~amount,
           name = "Full_Part",
@@ -148,11 +175,15 @@ p <- plot_ly() %>%
           title = "Borough",
           domain = list(row = 1, column = 1))%>%
   
-  layout(title = "Pie Chart Summary of NYC Job Data", showlegend = F,
+  layout(title = "Pie Charts Summary of NYC Job Data", showlegend = F,
          grid=list(rows=2, columns=2),
+         paper_bgcolor='transparent',
          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-#p
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
+  )
+p
+
+
 
 #pie_chart
 
@@ -161,14 +192,14 @@ p <- plot_ly() %>%
 data_agency = aggregate(data$num_positions, by = list(Category = data$Agency), FUN=sum)
 colnames(data_agency) = c("Agency","Amount")
 
-# q <- data_agency %>%
-#   group_by(Agency) %>%
-#   plot_ly(labels = ~Agency, values = ~Amount) %>%
-#   add_pie(hole = 0.7) %>%
-#   layout(title = "Number of positons by Agency",  showlegend = F,
-#          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-#          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-# 
+q <- data_agency %>%
+  group_by(Agency) %>%
+  plot_ly(labels = ~Agency, values = ~Amount) %>%
+  add_pie(hole = 0.7) %>%
+  layout(title = "Number of positons by Agency",  showlegend = F,
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
 # q
 
 ### Suzie plot end ========================================================

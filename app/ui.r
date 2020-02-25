@@ -201,9 +201,9 @@ tabItem(tabName = "Other",
                           )),
                           
                           fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
-                                          plotlyOutput("job_pie")))
-                          # fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
-                          #                 plotlyOutput("job_donut")))
+                                          plotlyOutput("job_pie"))),
+                           fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
+                                           plotlyOutput("job_donut")))
                           
           )))),
 

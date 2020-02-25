@@ -172,10 +172,45 @@ tabItem(tabName = "Salary",
 #sub1 end---------------------------------------------------------------------------------------           
 
 #sub2 begin----------------------------------------------------------------------------------------
-
+tabItem(tabName = "Full",
+        fluidPage(
+          fluidRow(column(12,
+                          h3("Interactive Dashboard"),
+                          "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
+                          tags$div(tags$ul(
+                            tags$li("*****"),
+                            tags$li("*****")
+                          )),
+                          
+                          fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
+                                          plotlyOutput("job_time_count")))
+                   
+          )))),
 
 #sub2 end-------------------------------------------------------------------------------------------
-    
+  
+#sub3 begin------------------------------------------------------------------------------------------
+tabItem(tabName = "Other",
+        fluidPage(
+          fluidRow(column(12,
+                          h3("Interactive Dashboard"),
+                          "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
+                          tags$div(tags$ul(
+                            tags$li("*****"),
+                            tags$li("*****")
+                          )),
+                          
+                          fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
+                                          plotlyOutput("job_pie")))
+                          # fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
+                          #                 plotlyOutput("job_donut")))
+                          
+          )))),
+
+
+
+#sub3 end--------------------------------------------------------------------------------------------
+
 ### Johnson statistical analysis part end------------------------------------------------
 ### Stephen statistical analysis part begin------------------------------------------------
   tabItem(tabName = "Facts",

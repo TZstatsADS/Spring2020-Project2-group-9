@@ -36,7 +36,7 @@ figure_salary_col
 
 
 figure_time <- ggplot(job_data_year, aes(x = year, fill =`Full/Part` ))+ geom_bar() 
-#figure_time 
+figure_time 
 
 job_salary_factor <- job_data_year %>% 
   dplyr::select(`Job ID`,`Full/Part`,`year`,`Career Level`,"salary" = `Salary Range To`) %>%
@@ -110,3 +110,89 @@ salary_agency<-ggplot(agency_salary_10,aes(x=Agency,y=`Salary Range To`,fill=Age
   theme(legend.position='none')+  
   ylim(0,300000)+theme_light()+labs(title="Top's Salary Job Agency",y="Agency",x="Salary")  
 ###Stephen Li =====================================================
+
+### Suzie plot begin =====================================================
+data <- read.csv("../data/na_drop.csv")
+#data = read.csv("na_drop.csv", header = TRUE)
+
+data_FUll_Part = as.data.frame(table(data$Full.Part))
+colnames(data_FUll_Part) = c("categories","amount") 
+
+data_Career_Level = as.data.frame(table(data$Career.Level))
+colnames(data_Career_Level) = c("categories","amount") 
+
+data_category = as.data.frame(table(data$category))
+colnames(data_category) = c("categories","amount") 
+
+data_borough = as.data.frame(table(data$borough))
+colnames(data_borough) = c("categories","amount") 
+
+p <- plot_ly() %>%
+  add_pie(data = data_FUll_Part , labels = ~categories, values = ~amount,
+          name = "Full_Part",
+          title = "Part time or Full time",
+          domain = list(row = 0, column = 0))%>%
+  
+  add_pie(data = data_Career_Level , labels = ~categories, values = ~amount,
+          name = "Caeer Level",
+          title = "Caeer Level",
+          domain = list(row = 0, column = 1))%>%
+  
+  add_pie(data = data_category , labels = ~categories, values = ~amount,
+          name = "Category",
+          title = "Category",
+          domain = list(row = 1, column = 0))%>%
+  
+  add_pie(data = data_borough , labels = ~categories, values = ~amount,
+          name = "borough",
+          title = "Borough",
+          domain = list(row = 1, column = 1))%>%
+  
+  layout(title = "Pie Chart Summary of NYC Job Data", showlegend = F,
+         grid=list(rows=2, columns=2),
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+#p
+
+#pie_chart
+
+#donut_chart_begin
+
+data_agency = aggregate(data$num_positions, by = list(Category = data$Agency), FUN=sum)
+colnames(data_agency) = c("Agency","Amount")
+
+# q <- data_agency %>%
+#   group_by(Agency) %>%
+#   plot_ly(labels = ~Agency, values = ~Amount) %>%
+#   add_pie(hole = 0.7) %>%
+#   layout(title = "Number of positons by Agency",  showlegend = F,
+#          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+#          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+# 
+# q
+
+### Suzie plot end ========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

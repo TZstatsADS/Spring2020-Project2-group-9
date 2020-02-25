@@ -224,6 +224,16 @@ q <- data_agency %>%
 
  q
 
+ 
+ 
+
+ figure_time_category <- ggplot(job_data_year, aes(x = year, fill =`category` ))+ geom_bar() + scale_fill_brewer(type = 'seq',palette = 'Set3')+theme(
+   panel.background = element_rect(fill = "transparent",colour = NA),
+   panel.grid.minor = element_blank(),
+   panel.grid.major = element_blank(),
+   plot.background = element_rect(fill = "transparent",colour = NA)) +
+   theme(legend.background = element_rect(colour = 'transparent', fill = 'transparent', size = 3, linetype='dashed'))
+ figure_time_category
 ### Suzie plot end ========================================================
 
 

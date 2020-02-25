@@ -35,9 +35,9 @@ dashboardPage(
     menuItem("MAP", tabName = "MAP", icon = icon("compass")),
     menuItem("Facts", tabName = "Facts", icon = icon("industry")),
     menuItem("Report", tabName = "Report", icon = icon("pencil-ruler"),startExpanded = TRUE,
-             menuSubItem("Salary",tabName = "Salary", icon = icon("industry")),
-             menuSubItem("Full",tabName = "Full"),
-             menuSubItem("Other",tabName = "Other")        
+             menuSubItem("Salary",tabName = "Salary", icon = icon("dollar-sign")),
+             menuSubItem("Year",tabName = "Year",icon = icon("address-book")),
+             menuSubItem("Other",tabName = "Other",icon = icon("award"))        
              ),
     menuItem("Job search", tabName = "job", icon = icon("clipboard")),
     menuItem("About", tabName = "about", icon = icon("sign-out"))
@@ -171,7 +171,7 @@ tabItem(tabName = "Salary",
           fluidPage(
             fluidRow(column(12,
                             h3("Interactive Dashboard"),
-                            "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
+                            "In this part, we analyze the critical statistics of the NYC job salary level and visualize the data by interactive dashboard.",
                             tags$div(tags$ul(
                               tags$li("The first dot chart demonstrates the salary of different career levels in various categories. "),
                               tags$li("The second bar plot shows the number of government jobs available with a specific salary range in different years.")
@@ -188,18 +188,21 @@ tabItem(tabName = "Salary",
 #sub1 end---------------------------------------------------------------------------------------           
 
 #sub2 begin----------------------------------------------------------------------------------------
-tabItem(tabName = "Full",
+tabItem(tabName = "Year",
         fluidPage(
           fluidRow(column(12,
                           h3("Interactive Dashboard"),
-                          "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
+                          "In this part, we focus on the statistics of the NYC job in chronological order.",
                           tags$div(tags$ul(
-                            tags$li("The pie charts indicate that most of the jobs available are full-time, experienced-hire in the community and technology data category in Manhatton."),
-                            tags$li("The donut chart illustrates that the department of environmental protection hires most people among other agencies.")
+                            tags$li("Both chats illustrate that there are more jobs available in 2019."),
+                            tags$li("More importantly, the number of technology&Data related  positions increases significantly ")
                           )),
                           
+                          fluidRow(column(width =  12, title = "Category count from 2013 to 2020", 
+                                          plotlyOutput("job_time_category"))),
                           fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
                                           plotlyOutput("job_time_count")))
+                          
                    
           )))),
 
@@ -210,10 +213,10 @@ tabItem(tabName = "Other",
         fluidPage(
           fluidRow(column(12,
                           h3("Interactive Dashboard"),
-                          "In this part, we analysis the critical statistics of the NYC job and visualize the data by interactive dashboard.",
+                          "In this part, we pay attention to the critical statistics of the NYC job and visualize the data by interactive dashboard.",
                           tags$div(tags$ul(
-                            tags$li("*****"),
-                            tags$li("*****")
+                            tags$li("The pie charts indicate that most of the jobs available are full-time, experienced-hire in the community and technology data category in Manhatton."),
+                            tags$li("The donut chart illustrates that the department of environmental protection hires most people among other agencies.")
                           )),
                           
                           fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 

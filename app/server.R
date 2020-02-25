@@ -115,6 +115,10 @@ shinyServer(function(input,output, session){
       ggplotly(q)
    })
    
+   output$job_time_category <- renderPlotly({
+      ggplotly(figure_time_category)
+   })
+   
 
 
 # Suzie plot begin --------------------------------------------------------------------------------------- 

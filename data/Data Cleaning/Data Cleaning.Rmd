@@ -18,7 +18,7 @@ library(stringr)
 
 ```{r}
 # df <- NYC_Jobs %>% select(`Job ID`, `Civil Service Title`, `Job Category`)
-df <- NYC_Jobs %>% select(-`Posting Type`,-`Business Title`,-`Title Classification`,-`Title Code No`,-Level,-`Job Description`,-`Minimum Qual Requirements`,-`Preferred Skills`,-`Additional Information`,-`To Apply`, -`Work Location 1`,-`Recruitment Contact`,-`Residency Requirement`,-`Post Until`, -`Posting Updated`, -`Process Date`, -`Hours/Shift`)
+df <- NYC_Jobs %>% select(-`Posting Type`,-`Business Title`,-`Title Classification`,-`Title Code No`,-Level,-`Minimum Qual Requirements`,-`Preferred Skills`,-`Additional Information`,-`To Apply`, -`Work Location 1`,-`Recruitment Contact`,-`Residency Requirement`,-`Post Until`, -`Posting Updated`, -`Process Date`, -`Hours/Shift`)
 df$`Job Category` <- df$`Job Category` %>% str_to_upper()
 `Civil Service Title` <- df$`Civil Service Title`
 `Job Category` <- df$`Job Category`

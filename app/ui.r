@@ -2,7 +2,7 @@
 
 # Load all the required libraries 
 packages.used <- c("shiny", "shinydashboard", 
-                   "leaflet", "shinyWidgets","plotly","shinythemes","wordcloud2")
+                   "leaflet", "shinyWidgets","plotly","shinythemes","wordcloud2", "DT")
 # check packages that need to be installed.
 packages.needed <- setdiff(packages.used, 
                            intersect(installed.packages()[,1], 
@@ -19,6 +19,7 @@ library(shinydashboard)
 library(leaflet)
 library(shinyWidgets)
 library(wordcloud2)
+library(DT)
 ####
 r_colors <- rgb(t(col2rgb(colors()) / 255))
 names(r_colors) <- colors()
@@ -206,13 +207,19 @@ tabItem(tabName = "Salary",
 
 #Job search -----------------------------------------------------------------------------------------
   tabItem(tabName = "job",
-            fluidPage(box(width = 12,height = 300,status = "info",textInput('key',
-                                               h2(strong(br(),br(),"Find A Job in New York City Government:",align = "center"),
-                                                  style = "color:white"))),
+            fluidPage(box(width = 12,height = 300,status = "info",searchInput("job_table",
+                                    h2(strong(br(),br(),"Find A Job in New York City Government:",align = "center"), style = "color:white"),
+                                    btnSearch = icon("search"))),
                       tags$style(HTML(".box.box-info{
-                        background:url('../nyc7.png');background-size: 100% 100%;opacity: 0.9
-                }"))     
+                        background:url('../nyc7.png');background-size: 100% 100%;opacity: 0.9}")),
+                      
+                      fluidRow(width = 4, height = 1,status = "primary", height = "575",solidHeader = T,
+                               column(12,
+                                 dataTableOutput("job_table")
+                                 )
                       )
+            
+            )
 
           )
 # Job search end -----------------------------------------------------------------------------------------

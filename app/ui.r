@@ -50,16 +50,27 @@ dashboardPage(
                          img(src="../career.jpg", width = "100%", height = "100%"),
                          
                          h1(strong("What you'll find here"),align = "center"),
+                         column(12,
+                                tags$ul(
+                                  tags$li(h5("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
+                                  tags$li(h5("The Workforce and Employee Development team wanted to help others help themselves by providing an online tool that sheds light on the otherwise invisible career paths in the County.")), 
+                                  tags$li(h5("In 2016, the Los Angeles County Quality and Productivity Commission granted the seed money that got the ball rolling.")),
+                                  tags$li(h5("We wanted to augment training provided through the Los Angeles County University by helping people see real career opportunities after taking a course that improved their skills.")),
+                                  tags$li(h5("Now, and into the future, we want to be a magnet for top talent and be an employer of choice."))
+                                )
+                         ),
+                         br(),
+                         h1(strong("About the Data"),align = "center"),
                          h5("An interactive tool to help you explore the actual paths employees have taken during their County 
                          careers. With information about the popularity of certain paths, salary differences, 
                          and more, you can build your own path based on what is meaningful to you.",align = "center"),
-                         hr(),
                          br(),
-                         h1("How it can help you",align = "center"),
+                         h1(strong("About the team"),align = "center"),
                          h5("An interactive tool to help you explore the actual paths employees have taken during their County 
                          careers. With information about the popularity of certain paths, salary differences, 
                          and more, you can build your own path based on what is meaningful to you.",align = "center")
-              )),
+              ),
+              ),
             
     ),
     
@@ -89,17 +100,22 @@ dashboardPage(
                          h3(hr()),
                          h3("City government is filled with opportunities for talented people 
                             who want to improve their communities and make an important difference 
-                            in the lives of their fellow New Yorkers.")),
-                     column(width = 6,img(src="../nyc1.jpg",width = "100%", height = "35%"),align = "left")
+                            in the lives of their fellow New Yorkers."),
+                         h3("Employees appointed to civil service positions enjoy stable,
+                            long-term employment with the City.")),
+            column(width = 6,img(src="../nyc1.jpg",width = "100%", height = "35%"),align = "right")
             ),
-            fluidRow(column(width = 6,img(src="../nyc2.png",width = "100%", height = "35%"),align = "right"),h3(hr()),
-                     solidHeader = TRUE,
-                     box(side = "left",width = 6,h2(strong("Do what you're passionate about"),align = "center"),
+            fluidRow(column(width = 6,img(src="../nyc2.png",width = "100%", height = "35%"),align = "left"),
+            
+            box(side = "left",solidHeader = TRUE,width = 6,h2(strong("Do what you're passionate about"),align = "center"),
                          background = "navy",hr(),
                          
                          h3("Are you interested in public health, community engagement, 
                             or disaster response? From civil engineering to forestry 
-                            and technology innovation, we have it all."))
+                            and technology innovation, we have it all."),
+                h3("Every day, the City's 325,000 employees serve millions of residents and visitors. 
+                   They improve infrastructure, provide important social services, and make the city safer.
+                   Help to shape the future of NYC."))
             )
             
     ),   

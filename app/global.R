@@ -48,11 +48,11 @@ figure_salary_col
 
 
 figure_time <- ggplot(job_data_year, aes(x = year, fill =`Full/Part` ))+ geom_bar() +
-  scale_fill_brewer()+theme(
-  panel.background = element_rect(fill = "transparent",colour = NA),
-  panel.grid.minor = element_blank(),
-  panel.grid.major = element_blank(),
-  plot.background = element_rect(fill = "transparent",colour = NA)) +
+  scale_fill_brewer(palette = 'Paired')+theme(
+    panel.background = element_rect(fill = "transparent",colour = NA),
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    plot.background = element_rect(fill = "transparent",colour = NA)) +
   theme(legend.background = element_rect(colour = 'transparent', fill = 'transparent', size = 3, linetype='dashed'))+
   guides(fill=guide_legend(title="Full/Part Time"))
 figure_time 

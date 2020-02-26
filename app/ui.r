@@ -52,20 +52,25 @@ dashboardPage(
                          h1(strong("What you'll find here"),align = "center"),
                          column(12,
                                 tags$ul(
-                                  tags$li(h5("In this project, we designed a shiny app with information about government job postings in NYC. We want to utilize the visualization tools in R and give potential job seekers information about government jobs in NYC." )), 
-                                  tags$li(h5("By NYC Government Job shiny app, we can easily find the information about job postings, job information and job salary, etc. What's more, we can get personalized information by clicking the option next to the graphs.")), 
-                                  tags$li(h5("Now, and into the future, we want to be a magnet for top talent and be an employer of choice."))
+                                  tags$li(h4("In this project, we designed a shiny app with information about government job postings in NYC. We want to utilize the visualization tools in R and give potential job seekers information about government jobs in NYC." )), 
+                                  tags$li(h4("By NYC Government Job shiny app, we can easily find the information about job postings, job information and job salary, etc. What's more, we can get personalized information by clicking the option next to the graphs.")), 
+                                  tags$li(h4("Now, and into the future, we want to be a magnet for top talent and be an employer of choice."))
                                 )
                          ),
                          br(),
                          h1(strong("About the Data"),align = "center"),
-                         h5(" We used the data \"NYC Jobs\" from NYC open data website. We cleaned the data before further exploration. 
-                            
-                            ",align = "center"),
+                         column(12,
+                         h4(" We used the data \"NYC Jobs\" from NYC open data website.This dataset contains current job postings available on the City of New York’s official jobs site.
+                         The data is from Jan.09,2014 to Feb.17,2020. We cleaned the data before further exploration."),
+                         hr(),
+                         img(src="../data.png", width = "100%", height = "30%",align = "center")),
                          br(),
-                         h1(strong("About the team 9"),align = "center"),
-                         h5("Chen, Shuyi sc4489@columbia.edu; Li, Jia jl5520@columbia.edu; Lu, Ran rl3077@columbia.edu; Shi, Mengying ms5922@columbia.edu; Walters, Ryan rw2532@columbia.edu; Zhang, Zhiyuan zz2677@columbia.edu",align = "center")
-              ),
+                         column(12,
+                         h1(strong("About the team"),align = "center"),
+                         h4("The NYC Government Job Posting App is creadted by
+                           Shuyi Chen; Jia Li; Ran Lu; Mengying Shi; Zhiyuan Zhang; Ryan Walters."),
+                         br(),br()
+              )),
               ),
             
     ),
@@ -167,10 +172,10 @@ tabItem(tabName = "Salary",
           fluidPage(
             fluidRow(column(12,
                             h3("Interactive Dashboard"),
-                            "In this part, we analyze the critical statistics of the NYC job salary level and visualize the data by interactive dashboard.",
+                            h4("In this part, we analyze the critical statistics of the NYC job salary level and visualize the data by interactive dashboard."),
                             tags$div(tags$ul(
-                              tags$li("The first dot chart demonstrates the salary of different career levels in various categories. "),
-                              tags$li("The second bar plot shows the number of government jobs available with a specific salary range in different years.")
+                              tags$li(h4("The first dot chart demonstrates the salary of different career levels in various categories. ")),
+                              tags$li(h4("The second bar plot shows the number of government jobs available with a specific salary range in different years."))
                             )),
                           
                             fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 
@@ -188,10 +193,10 @@ tabItem(tabName = "Year",
         fluidPage(
           fluidRow(column(12,
                           h3("Interactive Dashboard"),
-                          "In this part, we focus on the statistics of the NYC job in chronological order.",
+                          h4("In this part, we focus on the statistics of the NYC job in chronological order."),
                           tags$div(tags$ul(
-                            tags$li("Both chats illustrate that there are more jobs available in 2019."),
-                            tags$li("More importantly, the number of technology&Data related  positions increases significantly ")
+                            tags$li(h4("Both chats illustrate that there are more jobs available in 2019.")),
+                            tags$li(h4("More importantly, the number of technology&Data related  positions increases significantly "))
                           )),
                           
                           fluidRow(column(width =  12, title = "Category count from 2013 to 2020", 
@@ -209,10 +214,10 @@ tabItem(tabName = "Other",
         fluidPage(
           fluidRow(column(12,
                           h3("Interactive Dashboard"),
-                          "In this part, we pay attention to the critical statistics of the NYC job and visualize the data by interactive dashboard.",
+                          h4("In this part, we pay attention to the critical statistics of the NYC job and visualize the data by interactive dashboard."),
                           tags$div(tags$ul(
-                            tags$li("The pie charts indicate that most of the jobs available are full-time, experienced-hire in the community and technology data category in Manhatton."),
-                            tags$li("The donut chart illustrates that the department of environmental protection hires most people among other agencies.")
+                            tags$li(h4("The pie charts indicate that most of the jobs available are full-time, experienced-hire in the community and technology data category in Manhatton.")),
+                            tags$li(h4("The donut chart illustrates that the department of environmental protection hires most people among other agencies."))
                           )),
                           
                           fluidRow(column(width =  12, title = "Job count from 2013 to 2020", 

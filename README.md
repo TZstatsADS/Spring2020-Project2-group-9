@@ -15,19 +15,20 @@
 
 
 ## NYC Government Job MAP And More 
-Term: Spring 2020
 
-**Team Members**: 
-+ Team #9
-+  Team members
-	+ Chen, Shuyi
-	+ Li, Jia
-	+ Lu, Ran
-	+ Shi, Mengying (Presenter)
-	+ Walters, Ryan
-	+ Zhang, Zhiyuan
++ **Term: Spring 2020**
 
-**Shiny Link**:
++ **Team Members**: 
+  + Team #9
+  +  Team members
+     + Chen, Shuyi
+	 + Li, Jia
+	 + Lu, Ran
+	 + Shi, Mengying (Presenter)
+	 + Walters, Ryan
+	 + Zhang, Zhiyuan
+
++ **Shiny Link**:
 https://rrl525.shinyapps.io/NYC-Government-Job/
 
 + **Project summary**: 

@@ -1,0 +1,13 @@
+name: NYC-Government-Job
+title: NYC-Government-Job
+username:
+account: rrl525
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1865306
+bundleId: 2830623
+url: https://rrl525.shinyapps.io/NYC-Government-Job/
+when: 1582698577.0662
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: README.md

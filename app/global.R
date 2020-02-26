@@ -17,7 +17,8 @@ library(shiny)
 library(shinydashboard)
 
 ###Johnson Zhang begin====================================================
-job_data <- read_csv("../data/na_drop.csv")
+load("www/na_drop.RData")
+job_data <- na_drop
 job_data$`Posting Date` <- as.Date(job_data$`Posting Date`, "%m/%d/%Y")
 job_data_year <- job_data %>% mutate(year = year(`Posting Date`)) %>% group_by(year)  
 
@@ -137,8 +138,7 @@ salary_agency<-ggplot(agency_salary_10,aes(x=Agency,y=`Salary Range To`,fill=Age
 ###Stephen Li =====================================================
 
 ### Suzie plot begin =====================================================
-data <- read.csv("../data/na_drop.csv")
-#data = read.csv("na_drop.csv", header = TRUE)
+data <- read.csv("www/na_drop.csv")
 
 data_FUll_Part = as.data.frame(table(data$Full.Part))
 colnames(data_FUll_Part) = c("categories","amount") 

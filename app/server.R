@@ -20,7 +20,7 @@ library(tidyverse)
 library(dplyr)
 library(tibble)
 shinyServer(function(input,output, session){
-   load("../data/na_drop.RData")
+   load("www/na_drop.RData")
 # Ran map begin ========================================================================================   
    na_drop$`Posting Date` <- as.Date(na_drop$`Posting Date`, "%m/%d/%Y")
    

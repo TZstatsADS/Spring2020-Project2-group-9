@@ -21,10 +21,8 @@ library(shinyWidgets)
 library(wordcloud2)
 library(DT)
 ####
-r_colors <- rgb(t(col2rgb(colors()) / 255))
-names(r_colors) <- colors()
 ###
-load("../data/na_drop.RData")
+load("www/na_drop.RData")
 na_drop$`Posting Date` <- as.Date(na_drop$`Posting Date`, "%m/%d/%Y")
 
 dashboardPage(

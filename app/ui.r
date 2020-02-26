@@ -68,7 +68,8 @@ dashboardPage(
                          column(12,
                          h1(strong("About the team"),align = "center"),
                          h4("The NYC Government Job Posting App is creadted by
-                           Shuyi Chen; Jia Li; Ran Lu; Mengying Shi; Zhiyuan Zhang; Ryan Walters."),
+                           Shuyi Chen; Jia Li; Ran Lu; Mengying Shi; Zhiyuan Zhang; Ryan Walters.",align = "center"),
+                         h4("Thanks the help of ADS teaching team.",align = "center"),
                          br(),br()
               )),
               ),

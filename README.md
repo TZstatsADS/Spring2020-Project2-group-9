@@ -29,7 +29,7 @@ Term: Spring 2020
 
 + **Project summary**: 
 
-The project develops a Shiny App with information about government job postings in NYC.  In particular, we further analyze the working location, salary and job categories that draw the attention of potential job seekers. This App can not only provide job seekers with useful information during their job hunting period but also generalize the job market trend for college students in NYC. We hope to support potential job seekers' information about government jobs in NYC.
+The project develops a Shiny App with information about government job postings in NYC.Our data is from NYC open Data. In particular, we further analyze the working location, salary and job categories that draw the attention of potential job seekers. This App can not only provide job seekers with useful information during their job hunting period but also generalize the job market trend for college students in NYC. We hope to support potential job seekers' information about government jobs in NYC.
 
 + **Contribution statement**: 
  

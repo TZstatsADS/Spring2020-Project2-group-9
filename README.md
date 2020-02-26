@@ -28,10 +28,10 @@
 	 + Walters, Ryan
 	 + Zhang, Zhiyuan
 
-+ **Shiny Link**:
++ **Shiny Link**: 
 https://rrl525.shinyapps.io/NYC-Government-Job/
 
-+ **Source of the Data Set**：
++ **Source of the Data Set**: 
 https://data.cityofnewyork.us/City-Government/NYC-Jobs/kpav-sd4t
 
 + **Project Summary**: 
